@@ -35,7 +35,7 @@ const { Node } = require('../extensions/list-tree.js');
   }
 
   has(data) {
-    return searchWithin(this.root, data);
+    return searchWithin(this.rootTree, data);
 
     function searchWithin(node, data) {
       if (!node) {
@@ -46,18 +46,32 @@ const { Node } = require('../extensions/list-tree.js');
         return true;
       }
 
-      return data < node.data ? 
-        searchWithin(node.left, data) : 
+      return data < node.data ?
+        searchWithin(node.left, data) :
         searchWithin(node.right, data);
     }
   }
 
   find(data) {
-return this.data;
+    return searchElem(this.rootTree, data);
+
+    function searchElem(node, data) {
+      if (!node) {
+        return null;
+      }
+
+      if (node.data === data) {
+        return node;
+      }
+
+      return data < node.data ?
+        searchElem(node.left, data) :
+        searchElem(node.right, data);
+    }
   }
 
   remove(data) {
-    this.root = removeNode(this.root, data);
+    this.root = removeNode(this.rootTree, data);
 
     function removeNode(node, data) {
       if (!node) {
@@ -125,6 +139,6 @@ return this.data;
   }
 }
 module.exports = {
-  
+
   BinarySearchTree
 };
