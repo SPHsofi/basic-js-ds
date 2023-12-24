@@ -1,4 +1,3 @@
-const { normalizeStyle } = require('vue');
 const { NotImplementedError, ListNode } = require('../extensions/index.js');
 
 const { Node } = require('../extensions/list-tree.js');
@@ -46,5 +45,6 @@ class BinarySearchTree {
 }
 
 module.exports = {
+  
   BinarySearchTree
 };
