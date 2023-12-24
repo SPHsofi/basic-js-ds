@@ -14,7 +14,7 @@ const { Node } = require('../extensions/list-tree.js');
     return this.rootTree;
   }
   add(data) {
-    this.root = addWithin(this.root, data);
+    this.rootTree = addWithin(this.rootTree, data);
 
     function addWithin(node, data) {
       if (!node) {
@@ -30,7 +30,6 @@ const { Node } = require('../extensions/list-tree.js');
       } else {
         node.right = addWithin(node.right, data);
       }
-
       return node;
     }
   }
@@ -100,11 +99,11 @@ return this.data;
   }
 
   min() {
-    if (!this.root) {
+    if (!this.rootTree) {
       return;
     }
 
-    let node = this.root;
+    let node = this.rootTree;
     while (node.left) {
       node = node.left;
     }
@@ -113,11 +112,11 @@ return this.data;
   }
 
   max() {
-    if (!this.root) {
+    if (!this.rootTree) {
       return;
     }
 
-    let node = this.root;
+    let node = this.rootTree;
     while (node.right) {
       node = node.right;
     }
